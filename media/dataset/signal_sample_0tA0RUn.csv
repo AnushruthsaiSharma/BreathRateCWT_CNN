@@ -1,0 +1,9 @@
+subject_id,age,weight,chest_diameter,asthma,bpm_class,condition,time_index,voltage
+1,62,70,0.73,0,18,sitting,0,-0.076
+1,62,70,0.73,0,18,sitting,1,-0.075
+1,62,70,0.73,0,18,sitting,2,-0.077
+1,62,70,0.73,0,18,sitting,3,-0.073
+2,55,68,0.75,0,20,standing,0,-0.080
+2,55,68,0.75,0,20,standing,1,-0.081
+2,55,68,0.75,0,20,standing,2,-0.079
+2,55,68,0.75,0,20,standing,3,-0.078
