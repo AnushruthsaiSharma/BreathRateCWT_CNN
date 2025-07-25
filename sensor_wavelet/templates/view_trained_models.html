@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trained Models</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+            padding: 60px;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        li {
+            background: #fff;
+            margin: 10px 0;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        li:first-letter {
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Trained CNN Models</h2>
+    <ul>
+        {% for m in models %}
+        <li>{{ m }}</li>
+        {% empty %}
+        <li>No models found.</li>
+        {% endfor %}
+    </ul>
+<center><button><a href="{% url 'admin_dashboard' %}">⬅️ Back to Dashboard</a></button></center>
+</body>
+</html>

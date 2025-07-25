@@ -1,0 +1,89 @@
+<!-- sensor_wavelet/templates/admin_upload_dataset.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - Upload Dataset & Train</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            padding: 60px;
+            text-align: center;
+            color: #2c3e50;
+        }
+        h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            display: inline-block;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        label {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        input[type="file"] {
+            margin: 15px 0;
+            padding: 10px;
+        }
+        button {
+            background: #2980b9;
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #1c5980;
+        }
+        p {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 20px;
+            background: #27ae60;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        a:hover {
+            background: #219150;
+        }
+    </style>
+</head>
+<body>
+    <h2>📁 Upload Dataset for Model Training</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Select Dataset File (.csv):</label><br><br>
+        <input type="file" name="dataset_file" required><br><br>
+        <button type="submit">Upload & Train</button>
+    </form>
+
+    {% if message %}
+        <p style="margin-top:20px; color: {% if "failed" in message %}red{% else %}green{% endif %};">
+            {{ message }}
+        </p>
+    {% endif %}
+
+    {% if accuracy %}
+        <p><strong>🎯 Accuracy:</strong> {{ accuracy }}%</p>
+    {% endif %}
+
+    <br>
+    <a href="{% url 'admin_dashboard' %}">⬅️ Back to Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #fc466b, #3f5efb);
+            text-align: center;
+            padding-top: 100px;
+            color: #fff;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .dashboard {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            animation: slideUp 1s ease;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        a {
+            display: block;
+            margin: 15px 0;
+            padding: 12px 20px;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        a:hover {
+            background-color: #f2f2f2;
+            color: #333;
+            transform: scale(1.05);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to   { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h2>Welcome, Admin!</h2>  
+        <ul>
+            <li><a href="{% url 'admin_upload_dataset' %}">📁 Upload & Train Dataset</a></li>
+            <li><a href="{% url 'view_all_users' %}">👤 View All Users</a></li>
+            <li><a href="{% url 'view_all_predictions' %}">📊 View All Predictions</a></li>
+            <li><a href="{% url 'view_trained_models' %}">📦 View Trained Models</a></li>
+            <li><a href="{% url 'admin_logout' %}">🚪 Logout</a></li>
+            
+        </ul>
+    </div>
+</body>
+</html>

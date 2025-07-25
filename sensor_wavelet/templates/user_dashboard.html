@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            padding: 60px;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .dashboard {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 40px 30px;
+            max-width: 500px;
+            margin: auto;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            animation: slideUp 0.7s ease;
+        }
+
+        .dashboard h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+
+        .dashboard a {
+            display: block;
+            margin: 18px 0;
+            text-decoration: none;
+            color: #fff;
+            background: #3498db;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .dashboard a:hover {
+            background: #2c80b4;
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h2>Welcome to Your Dashboard</h2>
+        <a href="{% url 'view_profile' %}">👤 View Profile</a>
+        <a href="{% url 'predict_signal' %}">📈 Prediction Page</a>
+        <a href="{% url 'view_history' %}">📜 View Prediction History</a>
+        <a href="{% url 'logout' %}">🔓 Logout</a>
+    </div>
+</body>
+</html>

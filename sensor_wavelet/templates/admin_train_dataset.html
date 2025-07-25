@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin: Train Model</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #56ccf2, #2f80ed);
+            color: #333;
+            padding: 50px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .box {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 500px;
+            margin: auto;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.6s ease-in-out;
+        }
+
+        input[type="file"] {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background: #f9f9f9;
+            width: 80%;
+            box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
+        }
+
+        button {
+            background: #2f80ed;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+
+        button:hover {
+            background: #1c60d6;
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .success {
+            margin-top: 20px;
+            color: green;
+            font-size: 18px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .accuracy {
+            font-size: 22px;
+            color: #2f80ed;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Upload Dataset & Train CNN</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="dataset" required accept=".csv"><br>
+            <button type="submit">Train Model</button>
+            <a href="{% url 'admin_dashboard' %}">⬅️ Back to Dashboard</a>
+        </form>
+
+        {% if message %}
+            <div class="success">{{ message }}</div>
+        {% endif %}
+        {% if accuracy %}
+            <p><strong>🎯 Accuracy:</strong> {{ accuracy }}%</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+<center><button><a href="{% url 'admin_dashboard' %}">⬅️ Back to Dashboard</a></button></center>

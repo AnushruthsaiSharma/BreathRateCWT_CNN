@@ -1,0 +1,57 @@
+<h2 style="
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    color: #2c3e50;
+    margin-bottom: 20px;
+">
+    👥 Registered Users
+</h2>
+
+<table border="1" style="
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+">
+    <tr style="background: linear-gradient(to right, #36d1dc, #5b86e5); color: white; font-weight: bold;">
+        <th style="padding: 12px;">Name</th>
+        <th style="padding: 12px;">Email</th>
+        <th style="padding: 12px;">Status</th>
+        <th style="padding: 12px;">Action</th>
+    </tr>
+    {% for u in users %}
+    <tr style="background-color: {% cycle '#f9f9f9' '#ecf6ff' %}; text-align: center;">
+        <td style="padding: 10px;">{{ u.name }}</td>
+        <td style="padding: 10px;">{{ u.email }}</td>
+        <td style="padding: 10px; font-weight: bold; color: {% if u.is_active %}#27ae60{% else %}#c0392b{% endif %};">
+            {{ u.is_active|yesno:"Active,Inactive" }}
+        </td>
+        <td style="padding: 10px;">
+            <form method="post" action="{% url 'toggle_user' u.id %}">
+                {% csrf_token %}
+                <button type="submit" style="
+                    padding: 8px 15px;
+                    background: {% if u.is_active %}#e74c3c{% else %}#2ecc71{% endif %};
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    transition: 0.3s ease;
+                ">
+                    {{ u.is_active|yesno:"Deactivate,Activate" }}
+                </button>
+                
+            </form>
+        </td>
+        
+    </tr>
+
+    {% endfor %}
+    
+</table>
+ 
+<center><button><a href="{% url 'admin_dashboard' %}">⬅️ Back to Dashboard</a></button></center>

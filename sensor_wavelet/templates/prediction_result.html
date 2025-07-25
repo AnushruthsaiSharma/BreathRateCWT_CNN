@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            text-align: center;
+            padding-top: 120px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .result-box {
+            background-color: rgba(0, 0, 0, 0.55);
+            margin: auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            animation: slideUp 0.8s ease;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .pred {
+            font-size: 26px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #aaffff;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            color: #fff;
+            text-decoration: none;
+            background-color: #1e90ff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        a:hover {
+            background-color: #00bfff;
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(255,255,255,0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box">
+        <h2>Prediction Result</h2>
+        <p class="pred">Predicted BPM Class: <strong>{{ class }}</strong></p>
+        <a href="{% url 'upload_signal' %}">Try Another Prediction</a>
+    </div>
+</body>
+</html>

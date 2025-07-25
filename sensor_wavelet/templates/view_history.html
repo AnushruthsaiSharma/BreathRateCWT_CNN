@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction History</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            padding: 40px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 26px;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 85%;
+            margin: auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 14px 12px;
+            text-align: center;
+        }
+        th {
+            background: linear-gradient(to right, #36d1dc, #5b86e5);
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f7faff;
+        }
+        tr:hover {
+            background-color: #ecf3fb;
+        }
+        img {
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        a {
+            display: inline-block;
+            text-align: center;
+            margin: 25px 10px 0;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        a:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h2>📜 Your Breathing Rate Prediction History</h2>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Predicted BPM</th>
+            <th>Timestamp</th>
+            <th>CWT Image</th>
+        </tr>
+        {% for h in history %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ h.predicted_bpm }}</td>
+            <td>{{ h.uploaded_at|date:"Y-m-d H:i:s" }}</td>
+            <td>
+                {% if h.cwt_image_path %}
+                <img src="{{ MEDIA_URL }}{{ h.cwt_image_path }}" width="100" height="50">
+                {% else %}
+                N/A
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">No history found.</td></tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'user_dashboard' %}">⬅️ Back to Dashboard</a>
+    <a href="{% url 'logout' %}">🔓 Logout</a>
+</body>
+</html>

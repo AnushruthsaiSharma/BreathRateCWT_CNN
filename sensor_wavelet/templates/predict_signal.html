@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #00c9ff, #92fe9d);
+            color: #333;
+            padding: 50px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 12px;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        input[type="file"] {
+            padding: 12px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        h3, h4 {
+            margin-top: 30px;
+            color: #2c3e50;
+        }
+
+        img {
+            margin-top: 10px;
+            border: 2px solid #2980b9;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            color: #fff;
+            background: #333;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        a:hover {
+            background: #000;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h2>Upload Signal for Prediction</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="signal_file" accept=".csv,.txt" required><br><br>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h3>📈 Predicted Breathing Rate: {{ prediction }} bpm</h3>
+    {% endif %}
+
+    {% if signal_plot %}
+        <h4>🔌 Raw Voltage Signal:</h4>
+        <img src="data:image/png;base64,{{ signal_plot }}" style="width: 100%; max-width: 500px;">
+    {% endif %}
+
+    {% if cwt_image %}
+        <h4>🌊 CWT Image:</h4>
+        <img src="data:image/png;base64,{{ cwt_image }}" style="width: 100%; max-width: 500px;">
+    {% endif %}
+
+    <center><bottom><a href="{% url 'user_dashboard' %}">⬅️ Back to Dashboard</a></bottom></center>
+</body>
+</html>

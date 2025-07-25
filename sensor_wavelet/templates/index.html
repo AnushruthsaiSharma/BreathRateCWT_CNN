@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome | Breathing Rate Classifier</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #6dd5ed, #2193b0);
+            padding: 40px;
+            text-align: center;
+            color: #fff;
+            animation: fadeIn 1s ease-in;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 20px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .button:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>🫁 Breathing Rate Classification System</h1>
+    <a href="{% url 'admin_login' %}" class="button">🔐 Admin Login</a>
+    <a href="{% url 'user_login' %}" class="button">👤 User Login</a>
+    <marquee><bottom>Mansoor@Copy right 2025</bottom></marquee>
+</body>
+</html>
